@@ -1,0 +1,21 @@
+import random
+
+tentativas=1
+numero=random.randrange(1,101)
+palpite=int(input("Digite um número entre 0 e 100: "))
+
+while numero != palpite:
+    if numero > palpite:
+        print ("O número que pensei é Maior!")
+        palpite = int(input("Digite um número entre 0 e 100: "))
+        tentativas= tentativas + 1
+
+    else:
+        print("O número que pensei é Menor!")
+        palpite = int(input("Digite um número entre 0 e 100: "))
+        tentativas= tentativas + 1
+      
+
+print("Acertou!")
+
+print("Advinhou o número em ", tentativas, "tentativas")
