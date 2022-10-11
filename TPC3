@@ -1,0 +1,202 @@
+variavel= []
+
+def criarlista():
+    variavel.clear()
+    import random
+    n=int(input("Quantos elementos pretende ter na sua lista?"))
+    for i in range(0,n):
+        i = random.randint(1,101)
+        variavel.append(i)
+    print(variavel)
+    print("================================================================")
+
+
+def utilcria():
+    variavel.clear()
+    n=int(input("Quantos elementos pretende ter na sua lista?"))
+    while n>0:
+        N=int(input("Digite os números que pretende ter na lista:"))
+        variavel.append(N)
+        n=n-1
+    print(variavel)
+    print("================================================================")
+
+def soma():
+    soma=0
+    if variavel!=[]:
+        for i in variavel:
+            soma=soma+i
+    elif variavel ==[]:
+        utilcria()
+        for i in variavel:
+            soma=soma+i
+    print(soma)
+    print("================================================================")
+
+
+def media():
+    soma=0
+    media=0
+    if variavel !=[]:
+        for i in variavel:
+           soma=soma+i
+           media=soma/len(variavel)
+    elif variavel ==[]:
+        utilcria()
+        for i in variavel:
+            soma=soma+i
+            media=soma/len(variavel)
+    print(media)
+    print("================================================================")
+
+def maior():
+    maior=0
+    if variavel !=[]:
+        for i in variavel:
+            if i>maior:
+                maior=i
+    elif variavel ==[]:
+        utilcria()
+        for i in variavel:
+            if i>maior:
+                maior=i
+    print(maior)
+    print("================================================================")
+
+
+def menor():
+    if variavel !=[]:
+        variavel.sort()
+        print(variavel[0])
+    elif variavel ==[]:
+        utilcria()
+        variavel.sort()
+        print(variavel[0])
+    print("================================================================")
+
+
+def ordenadaC():
+    if variavel != []:
+        maior=variavel[0]
+        valor=True
+        for i in variavel:
+            if i<maior:
+                valor=False
+            maior=i
+        if valor ==True:
+            print("SIM")
+        else:
+            print("NÃO")
+    elif variavel ==[]:
+        utilcria()
+        maior=variavel[0]
+        valor=True
+        for i in variavel:
+            if i<maior:
+                valor=False
+            maior=i
+        if valor ==True:
+            print("SIM")
+        else:
+            print("NÃO")
+    print("================================================================")
+
+
+def ordenadaD():
+    if variavel != []:
+        menor=variavel[0]
+        valor=True
+        for i in variavel:
+            if i>menor:
+                valor=False
+            menor=i
+        if valor ==True:
+            print("SIM")
+        else:
+            print("NÃO")
+    elif variavel ==[]:
+        utilcria()
+        menor=variavel[0]
+        valor=True
+        for i in variavel:
+            if i>menor:
+                valor=False
+            menor=i
+        if valor ==True:
+            print("SIM")
+        else:
+            print("NÃO")
+    print("================================================================")
+
+
+def procura():
+    if variavel !=[]:
+        procura=int(input("Digite o elemento que deseja procurar:"))
+        if procura in variavel:
+            print("Esse elemento encontra-se na posição ", variavel.index(procura))
+        else:
+            print("Esse elemento não se encontra nesta lista!")
+    elif variavel ==[]:
+        utilcria()
+        procura=int(input("Digite o elemento que deseja procurar:"))
+        if procura in variavel:
+           print("Esse elemento encontra-se na posição ", variavel.index(procura))
+        else:
+            print("Esse elemento não se encontra nesta lista!")
+    print("================================================================")
+
+
+def sair():
+    print("Esta é a última lista guardada! Obrigada.")
+    print(variavel)
+    print("================================================================")
+   
+
+def menu():
+    print("""(1) Criar Lista 
+(2) Ler Lista
+(3) Soma
+(4) Média
+(5) Maior
+(6) Menor
+(7) estaOrdenada por ordem crescente
+(8) estaOrdenada por ordem decrescente
+(9) Procura um elemento
+(0) Sair""")
+    print()
+    print("================================================================")
+
+
+menu()
+opção=int(input("Digite o número da função que pretende realizar:"))
+
+while opção !=0:
+
+    if opção==1:
+        criarlista()
+    elif opção==2:
+        utilcria()
+    elif opção==3:
+        soma()
+    elif opção==4:
+        media()
+    elif opção==5:
+        maior()
+    elif opção==6:
+        menor()
+    elif opção==7:
+        ordenadaC()
+    elif opção==8:
+        ordenadaD()
+    elif opção==9:
+        procura()
+    else:
+        print("Opção inválida")
+
+    print()
+    menu()
+    opção=int(input("Digite o número da função que pretende realizar:"))
+    print()
+
+if opção ==0:
+    sair()
