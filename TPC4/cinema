@@ -1,0 +1,134 @@
+sala1 = (150, [],"Twilight" )
+sala2 = (100, [2,43,5], "Hannibal")
+sala3 = (200, [1,10,56,150,98,15], "Avatar")
+sala4 = (50, [2,5,43,8], "Minions")
+sala5 = []
+cinema1 = [(sala1), (sala2), (sala3), (sala4)]
+
+def listar (cinema):
+    print("Lista de filmes em exibição:")
+    for i in cinema:
+        lotação, lugocupa, filmes = i
+        print(filmes)
+    return filmes
+
+def disponivel (cinema, lugar, filme):
+    resultado = True
+    n = 0
+    for i in cinema:
+        lotação, lugocupa, filmes = i
+        if filme == filmes:
+            while n < len(lugocupa):
+                if lugar == lugocupa[n]:
+                    resultado = False
+                n = n + 1
+    return resultado
+
+def vendebilhete(cinema,lugar, filme):
+    if disponivel (cinema, lugar, filme):
+        for i in cinema:
+            lotação, lugocupa, filmes = i
+            if lugar !=lugocupa:
+                lugocupa.append(lugar)
+    return cinema
+   
+def listardisponibilidades (cinema):
+    for i in cinema:
+        lotação, lugocupa, filmes = i
+        print(filmes)
+        print("Lugares disponíveis:" , lotação - len(lugocupa))
+        print("=============================")
+
+
+def inserirSala(cinema, salanova):
+    cineman = []
+    for i in cinema:
+        cineman.append(i)
+    if salanova not in cineman:
+        cineman.append(salanova)
+    return sala5
+
+def opção1 ():
+    listar(cinema1)
+    return cinema1
+ 
+def opção2():
+    print("Qual é a sala onde pretende ver lugares ocupados?")
+    print(" (1) 'Twilight' \n (2) 'Hannibal' \n (3) 'Avatar' \n (4) 'Minions' ")
+    print("NOTA: \n True significa que o lugar está disponível \n False significa que está ocupado, logo escolha outro")
+    print("============================================================")
+    n =int(input("Digite o número da sala:"))
+    if n==1:
+        filme= "Twilight"
+    elif n==2:
+        filme= "Hannibal" 
+    elif n==3:
+        filme= "Avatar"
+    elif n==4:
+        filme = "Minions"
+    else:
+        print("Essa sala não está disponível neste cinema")
+    print("Qual é o lugar que pretende verificar se está ocupado ou não?")
+    lugar = int(input("Digite o número do lugar"))
+    print (disponivel(cinema1,lugar,filme))
+
+def opção3():
+    print("Qual é a sessão que pretende ver:")
+    print(" (1) 'Twilight' \n (2) 'Hannibal' \n (3) 'Avatar' \n (4) 'Minions' ")
+    n =int(input("Digite o número correspondente ao filme que quer ver:"))
+    if n==1:
+        filme= "Twilight"
+    elif n==2:
+        filme= "Hannibal" 
+    elif n==3:
+        filme= "Avatar"
+    elif n==4:
+        filme = "Minions"
+    else:
+        print("Esse filme não está disponível neste cinema")
+    print("Qual é o lugar que escolhe?")
+    lugar = int(input("Digite o número do lugar"))
+    vendebilhete(cinema1,lugar, filme)
+    print("O lugar foi marcado com sucesso!")
+    return lugar
+
+def opção4():
+    listardisponibilidades (cinema1)
+    return cinema1
+
+def opção5():
+    inserirSala(cinema1, sala5)
+    return cinema1
+    
+def sair():
+    print("Escolheu sair do programa \nObrigada por ter vindo ao cinema, esperemos que tenha se divertido!")
+
+def menu():
+    print("MENU: \n (1) - Lista dos filmes em exibição; \n (2) - Ver lugares ocupados; \n (3) - Escolher o lugar; \n (4) - Ver lugares disponiveis para cada filme; \n (5) - Acrescentar sala a um cinema \n (0) - Sair")
+
+menu()
+print("Olá! Digita o número correspondente à ação que pretendes realizar:")
+opção = int(input("Digite o número correspondente à ação que pretendes realizar:"))
+print("==========================================")
+
+while opção !=0:
+    if opção ==1:
+        opção1()
+    elif opção ==2:
+        opção2()
+    elif opção ==3:
+        opção3()
+    elif opção ==4:
+        opção4()
+    elif opção ==5:
+        opção5()
+    else:
+        print("Opção não disponível!")
+
+    print("==========================================")
+    menu()
+    opção = int(input("Digite o número da função que pretende realizar:"))
+    print("==========================================")
+
+if opção ==0:
+    sair()
